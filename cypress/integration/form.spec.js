@@ -19,5 +19,8 @@ describe("Form test", () => {
       .type("Mind you if I ask some silly question?")
       .should("have.value", "Mind you if I ask some silly question?");
 
+    //testando envio do formulario
+    cy.get("form").submit();
+
   });
 });
