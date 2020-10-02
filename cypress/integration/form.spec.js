@@ -19,8 +19,17 @@ describe("Form test", () => {
       .type("Mind you if I ask some silly question?")
       .should("have.value", "Mind you if I ask some silly question?");
 
+    cy.server();
+    cy.route({
+      url: "/users/**",
+      method: "POST",
+      response: { status: "Saved", code: 201 }
+    });
+
     //testando envio do formulario
     cy.get("form").submit();
+
+    cy.contains("Form saved!");
 
   });
 });
